@@ -1,0 +1,49 @@
+name: Workflow-training
+
+on:
+
+    workflow_dispatch:
+
+      inputs:
+        number1:
+          required: true
+        number2:
+          required: true
+
+jobs:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Cloning the repository
+      - uses: actions/checkout@v3
+
+      - name: Python version setup
+        uses: actions/setup-python@v1
+        with: python-version: '3.11'
+
+      - name: Install dependencies (pytest+black)
+        run : |
+          pip install pytest
+          pip install black
+
+      - name: Compile the code 
+        run: python -m py_compile calculator.py
+
+      - name: Run calculator script
+        run: python calculator.py ${{ inputs.number1}} ${{ inputs.number2 }}
+
+      - name: Run pytest
+        run: pytest test_calculator.py
+
+      - name: Run black for code structure
+        run: black calculator.py
+
+          
+
+
+
+
+
+    
+
