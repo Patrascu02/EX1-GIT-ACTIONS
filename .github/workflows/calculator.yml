@@ -34,7 +34,7 @@ jobs:
         run: python calculator.py ${{ github.event.inputs.number1 }} ${{ github.event.inputs.number2 }}
 
       - name: Run pytest
-        run: pytest test_calculator.py
+        run: pytest tests/test_calculator.py
 
       - name: Run black for code structure
         run: black --check calculator.py
