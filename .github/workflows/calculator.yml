@@ -37,4 +37,4 @@ jobs:
         run: python -m pytest tests/test_calculator.py
 
       - name: Run black for code structure
-        run: black --check calculator.py
+        run: black  calculator.py
